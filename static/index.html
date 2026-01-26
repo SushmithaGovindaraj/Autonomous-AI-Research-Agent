@@ -1,102 +1,160 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autonomous AI Research Agent</title>
+    <title>Nexus | Autonomous AI Research</title>
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
     <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
 </head>
+
 <body>
-    <div class="background-globes">
-        <div class="globe globe-1"></div>
-        <div class="globe globe-2"></div>
-    </div>
+    <div class="cursor-glow"></div>
+    <div class="noise-bg"></div>
 
-    <div class="container">
-        <header>
-            <div class="logo">
-                <span class="icon">🤖</span>
-                <h1>Autonomous Research Agent</h1>
+    <main class="app-container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="badge-container">
+                <span class="badge">
+                    <span class="pulse"></span>
+                    AI Research Agent v2.0
+                </span>
             </div>
-            <p class="subtitle">AI-powered deep research, data analysis, and reporting.</p>
-        </header>
 
-        <main>
-            <section class="search-section">
-                <div class="input-wrapper">
-                    <input type="text" id="research-input" placeholder="What would you like to research today?" autocomplete="off">
-                    <button id="start-btn">Start Research</button>
-                </div>
-                <div class="suggestions">
-                    <span>Try:</span>
-                    <button class="chip">Market trends in AI 2024</button>
-                    <button class="chip">Global EV sales analysis</button>
-                    <button class="chip">Impact of remote work on productivity</button>
-                </div>
-            </section>
+            <h1 class="gradient-text">Unlock Deep Insights<br>with Autonomous AI</h1>
+            <p class="hero-desc">Enter any topic. Our agent plans, researches, analyzes, and visualizes comprehensive
+                reports in minutes.</p>
+        </section>
 
-            <section id="status-display" class="hidden">
-                <div class="status-header">
-                    <div class="indicator">
-                        <div class="spinner"></div>
-                        <span id="status-text">Initializing...</span>
+        <!-- Search Interface -->
+        <section class="search-interface">
+            <div class="search-box-wrapper">
+                <div class="search-box">
+                    <i class="ri-search-2-line search-icon"></i>
+                    <input type="text" id="research-input" placeholder="What do you want to research today?"
+                        autocomplete="off">
+                    <button id="start-btn" aria-label="Start Research">
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+                <div class="search-glow"></div>
+            </div>
+
+            <!-- Suggestions -->
+            <div class="input-suggestions" id="suggestions">
+                <span class="suggestion-tag" onclick="useSuggestion('Future of Solid State Batteries')">🔋 Future of
+                    Batteries</span>
+                <span class="suggestion-tag" onclick="useSuggestion('AI Impact on Healthcare 2025')">🏥 AI in
+                    Healthcare</span>
+                <span class="suggestion-tag" onclick="useSuggestion('Global EV Market Trends')">🚗 EV Market
+                    Trends</span>
+            </div>
+        </section>
+
+        <!-- Live Status - Hidden by default -->
+        <section id="status-section" class="hidden">
+            <div class="agent-display">
+                <div class="agent-avatar">
+                    <div class="thinking-ring"></div>
+                    <i class="ri-robot-2-fill"></i>
+                </div>
+                <div class="agent-status">
+                    <h3 id="current-phase">Initializing...</h3>
+                    <p id="current-action" class="typewriter"> preparing workspace...</p>
+                </div>
+            </div>
+
+            <div class="workflow-steps">
+                <div class="step-item" id="step-planner">
+                    <div class="step-icon"><i class="ri-map-pin-2-line"></i></div>
+                    <span>Planner</span>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step-item" id="step-researcher">
+                    <div class="step-icon"><i class="ri-global-line"></i></div>
+                    <span>Researcher</span>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step-item" id="step-coder">
+                    <div class="step-icon"><i class="ri-code-s-slash-line"></i></div>
+                    <span>Coder</span>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step-item" id="step-evaluator">
+                    <div class="step-icon"><i class="ri-file-text-line"></i></div>
+                    <span>Evaluator</span>
+                </div>
+            </div>
+
+            <!-- Terminal Output -->
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <div class="terminal-controls">
+                        <span class="control red"></span>
+                        <span class="control yellow"></span>
+                        <span class="control green"></span>
                     </div>
-                    <div class="progress-steps">
-                        <div class="step" id="step-planner">Planner</div>
-                        <div class="step" id="step-researcher">Researcher</div>
-                        <div class="step" id="step-coder">Coder</div>
-                        <div class="step" id="step-evaluator">Evaluator</div>
+                    <span>agent_logs.bash</span>
+                </div>
+                <div class="terminal-content" id="console-logs">
+                    <!-- Logs go here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Report - Hidden by default -->
+        <section id="results-section" class="hidden">
+            <div class="report-container">
+                <div class="report-header">
+                    <h2>Research Findings</h2>
+                    <div class="report-actions">
+                        <button class="btn-secondary" onclick="exportPDF()">
+                            <i class="ri-file-pdf-line"></i> Export PDF
+                        </button>
                     </div>
                 </div>
-                <div class="console-output" id="console-logs">
-                    <!-- Real-time logs will appear here -->
-                </div>
-            </section>
 
-            <section id="results-section" class="hidden">
-                <div class="result-card">
-                    <div class="card-header">
-                        <h2>Research Report</h2>
-                        <div class="actions">
-                            <button class="action-btn" id="copy-report">Copy</button>
-                            <button class="action-btn" id="download-report">Download</button>
+                <div class="report-grid">
+                    <div class="main-content markdown-body" id="report-content">
+                        <!-- Markdown Report -->
+                    </div>
+
+                    <aside class="sidebar">
+                        <div class="widget">
+                            <h3><i class="ri-pie-chart-2-line"></i> Visualizations</h3>
+                            <div id="chart-container" class="chart-gallery"></div>
                         </div>
-                    </div>
-                    <div class="markdown-content" id="report-content">
-                        <!-- Report content -->
-                    </div>
-                </div>
 
-                <div class="grid-layout">
-                    <div class="result-card">
-                        <h3>Visualizations</h3>
-                        <div class="chart-container" id="chart-container">
-                            <!-- Chart images -->
+                        <div class="widget">
+                            <h3><i class="ri-download-cloud-2-line"></i> Data Assets</h3>
+                            <div id="files-list" class="file-links"></div>
                         </div>
-                    </div>
-                    <div class="result-card">
-                        <h3>Data & Sources</h3>
-                        <div class="sources-list" id="sources-list">
-                            <!-- Sources -->
-                        </div>
-                        <div class="files-list" id="files-list">
-                            <!-- Files -->
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
 
-        <footer>
-            <p>Powered by LangGraph & Claude 3.5 Sonnet</p>
-        </footer>
-    </div>
+                        <div class="widget">
+                            <h3><i class="ri-links-line"></i> Sources</h3>
+                            <div id="sources-list" class="source-links"></div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+    </main>
 
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="/static/js/script.js"></script>
 </body>
+
 </html>

@@ -5,3 +5,4 @@ research_outputs
 *.pyc
 .DS_Store
 venv
+google-cloud-sdk/

@@ -1,24 +1,20 @@
-# Use an official Python runtime as a parent image
-FROM python:3.11-slim
+FROM python:3.10-slim
 
-# Set the working directory in the container
+# Set environment variables
+ENV PYTHONUNBUFFERED=1
+ENV PORT=8080
+
+# Create and change to the app directory.
 WORKDIR /app
 
-# Install system dependencies (if any are needed for numpy/pandas, though slim usually has enough)
-# RUN apt-get update && apt-get install -y gcc
+# Copy application dependency file to the container image.
+COPY requirements.txt ./
 
-# Copy the requirements file into the container at /app
-COPY requirements.txt .
-
-# Install any needed packages specified in requirements.txt
+# Install dependendencies.
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the application code
+# Copy local code to the container image.
 COPY . .
 
-# Expose the port the app runs on (Cloud Run defaults to 8080)
-ENV PORT=8080
-EXPOSE 8080
-
-# Run server.py when the container launches
-CMD ["python", "server.py"]
+# Run the web service on container startup.
+CMD exec uvicorn server:app --host 0.0.0.0 --port $PORT

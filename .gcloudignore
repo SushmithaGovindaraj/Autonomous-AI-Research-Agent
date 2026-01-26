@@ -1,0 +1,9 @@
+.git
+.gitignore
+__pycache__
+venv
+google-cloud-sdk/
+*.pyc
+*.tar.gz
+.DS_Store
+research_outputs/
