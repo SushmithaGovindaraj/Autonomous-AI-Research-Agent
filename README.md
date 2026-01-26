@@ -53,12 +53,11 @@ cp .env.example .env
 # Edit .env and add your ANTHROPIC_API_KEY
 ```
 
-4. Run the application:
-```bash
-streamlit run ui.py
-```
-
-The app will open at `http://localhost:8502`
+4. **Run the Application**
+   ```bash
+   python server.py
+   ```
+   Open [http://localhost:8000](http://localhost:8000) in your browser.
 
 ## 📊 Example Research Topics
 

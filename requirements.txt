@@ -12,3 +12,5 @@ duckduckgo-search
 pydantic
 sentence-transformers
 langchain-anthropic
+fastapi
+uvicorn
