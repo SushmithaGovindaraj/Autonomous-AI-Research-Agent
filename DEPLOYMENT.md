@@ -41,19 +41,37 @@ Render will build and deploy your app. Once finished, it will give you a URL (e.
 
 ---
 
-## Option 3: Docker (Advanced)
+## Option 3: Deploy on Google Cloud Platform (Cloud Run)
 
-You can also deploy using Docker. Create a `Dockerfile`:
+This is a professional, scalable option perfect for this application.
 
-```dockerfile
-FROM python:3.11-slim
+### Prerequisites
+*   A Google Cloud Project
+*   [Google Cloud SDK](https://cloud.google.com/sdk/docs/install) installed (or use Cloud Shell)
 
-WORKDIR /app
+### Steps
+1.  **Initialize Google Cloud**:
+    ```bash
+    gcloud init
+    ```
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+2.  **Deploy to Cloud Run**:
+    Run this single command from your project directory:
+    ```bash
+    gcloud run deploy autonomous-research-agent --source .
+    ```
 
-COPY . .
+3.  **Configuration Prompts**:
+    *   **Source code location**: Default (current directory)
+    *   **Region**: Select one near you (e.g., `us-central1`)
+    *   **Allow unauthenticated invocations**: **Yes** (y) (so the public can access your website)
 
-CMD ["python", "server.py"]
-```
+4.  **Set Environment Variables**:
+    After deployment, go to the [Cloud Run Console](https://console.cloud.google.com/run):
+    *   Click on your service (`autonomous-research-agent`)
+    *   Click **"Edit & Deploy New Revision"**
+    *   Go to the **"Variables & Secrets"** tab
+    *   Add Variable: `ANTHROPIC_API_KEY` with your value
+    *   Click **"Deploy"**
+
+Your agent is now live on Google Cloud with a production-grade URL!

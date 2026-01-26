@@ -1,0 +1,7 @@
+__pycache__
+.git
+.env
+research_outputs
+*.pyc
+.DS_Store
+venv
