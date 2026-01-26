@@ -1,1 +1,12 @@
-fastapi\nuvicorn\nlanggraph\nlangchain-anthropic\ntavily-python\nfaiss-cpu\npandas\nmatplotlib\npython-dotenv\nduckduckgo-search\npydantic\nsentence-transformers
+fastapi
+uvicorn
+langgraph
+langchain-anthropic
+tavily-python
+faiss-cpu
+pandas
+matplotlib
+python-dotenv
+duckduckgo-search
+pydantic
+sentence-transformers
