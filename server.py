@@ -71,6 +71,7 @@ async def event_generator(task: str):
         # Send complete signal
         yield "data: {\"status\": \"complete\"}\n\n"
     except Exception as e:
+        print(f"CRITICAL ERROR in event_generator: {str(e)}")
         error_data = {"error": str(e)}
         yield f"data: {json.dumps(error_data)}\n\n"
 
