@@ -6,7 +6,7 @@ load_dotenv()
 
 def get_llm(temperature=0):
     api_key = os.getenv("ANTHROPIC_API_KEY")
-    model_name = os.getenv("MODEL_NAME", "claude-3-5-sonnet-latest")
+    model_name = os.getenv("MODEL_NAME", "claude-sonnet-4-20250514")
     
     if not api_key:
         raise ValueError("Please set ANTHROPIC_API_KEY in the .env file")
