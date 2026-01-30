@@ -16,4 +16,3 @@ def get_llm(temperature=0):
         anthropic_api_key=api_key,
         temperature=temperature
     )
-```
