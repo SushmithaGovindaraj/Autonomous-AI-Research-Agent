@@ -91,7 +91,7 @@ MODEL_NAME=claude-sonnet-4-20250514
 
 ```
 autonomous-research-agent/
-├── ui.py                    # Streamlit interface
+├── ui.py                   # Streamlit interface
 ├── agent_workflow.py       # LangGraph orchestration
 ├── planner.py              # Research planning
 ├── researcher.py           # Data gathering & extraction
