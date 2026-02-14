@@ -46,6 +46,18 @@ cd autonomous-research-agent
 ```bash
 pip install -r requirements.txt
 ```
+The website is up, but it won't be able to "think" or research until you give it your Anthropic API Key.
+
+Follow these 1-minute instructions to finish:
+
+Open the Cloud Run Console.
+Click on the name "research-agent".
+Click the ➕ "EDIT & DEPLOY NEW REVISION" button at the top.
+Scroll down to the "Variables & Secrets" tab.
+Click "Add Variable":
+Name: ANTHROPIC_API_KEY
+Value: Paste your actual API key (the one starting with sk-ant...)
+Click the "DEPLOY" button at the very bottom.
 
 3. Configure your API key:
 ```bash
