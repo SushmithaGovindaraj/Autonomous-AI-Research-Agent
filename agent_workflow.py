@@ -6,7 +6,7 @@ from coder import coder_node
 from evaluator import evaluator_node
 
 def create_research_graph():
-    """Ultra-minimal workflow: Planner -> Researcher -> Coder -> Evaluator -> END"""
+    """Workflow: Planner -> Researcher -> Coder -> Evaluator -> END"""
     workflow = StateGraph(AgentState)
 
     workflow.add_node("planner", planner_node)
