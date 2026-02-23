@@ -4,11 +4,6 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain_core.documents import Document
 
-# I've switched to HuggingFace local embeddings (all-MiniLM-L6-v2).
-# This is great because:
-# 1. It's free and runs on your CPU.
-# 2. It doesn't need an API key for every vector search.
-# 3. It makes the research agent truly autonomous and local-friendly.
 class ResearchMemory:
     def __init__(self, index_path="research_outputs/faiss_index"):
         self.index_path = index_path
